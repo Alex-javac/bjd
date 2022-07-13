@@ -3,8 +3,8 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <changeSet id="create_user" author="alexander.alexeyuk">
-        <sqlFile dbms="mysql" encoding="utf8" path="ddl/create_user.sql"
+    <changeSet id="general_schema" author="alexander.alexeyuk">
+        <sqlFile dbms="mysql" encoding="utf8" path="ddl/general_schema.sql"
                  relativeToChangelogFile="true" endDelimiter=";"/>
     </changeSet>
 

@@ -2,6 +2,8 @@ package com.bjd.demo.dto.user;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,4 +16,5 @@ public class UserDto {
     private String email;
     private String phoneNumber;
     private String password;
+    private LocalDateTime createdAt;
 }

@@ -3,6 +3,7 @@ package com.bjd.demo.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -24,6 +25,8 @@ public class UserEntity {
     private String phoneNumber;
     @Column(name = "password")
     private String password;
+    @Column(name = "created_at", updatable = false, insertable = false)
+    private LocalDateTime createdAt;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude

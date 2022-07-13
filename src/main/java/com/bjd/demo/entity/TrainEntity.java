@@ -19,6 +19,7 @@ public class TrainEntity {
     @Column(name = "number")
     private String number;
     @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     private TrainType type;
 
     @OneToMany(mappedBy = "train", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
