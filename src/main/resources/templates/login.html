@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <style>
+        html {
+            background: #f5f5f5
+        }
+
+        body {
+            padding-top: 4em
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="columns">
+        <div class="column is-4">
+        </div>
+        <div class="column is-4">
+            <div class="box" style="padding:2em">
+                <div style="text-align:center;margin-bottom:1em">
+                    <img src="https://www.rw.by/uploads/userfiles/images/logo_bzhd.png" style="width:200px;">
+                    <p class="title is-4">Пожалуйста, войдите, чтобы продолжить</p>
+                </div>
+                <form th:method="post" th:action="@{/bjd/login}"
+                      th:object="${loginForm}">
+                    <input class="input is-medium" type="text" placeholder="Email" th:field="*{email}" />
+                    <input class="input is-medium" type="password" placeholder="Password" th:field="*{password}" />
+                    <input type="submit" class="button is-fullwidth is-medium is-link" value="Вход">
+                </form>
+                <div style="text-align:center">
+                <a th:href="@{/bjd/signup}" class="control-buttons-tab">Регистрация</a>
+                </div>
+            </div>
+        </div>
+        <div class="column is-4"></div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <style>
+        body {
+            padding-top: 1em
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="columns">
+        <div class="column is-2">
+            <img src="https://www.rw.by/uploads/userfiles/images/logo_bzhd.png"
+                 style="width:200px;margin-top:.75em">
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-2"></div>
+            <div class="column is-2"></div>
+            <a th:href="@{/bjd/signin}">
+            <img  src="https://cdn.dribbble.com/users/2220110/screenshots/8978209/media/df9de165263e8afdbee7e4205333b409.gif"
+                 alt="this slowpoke moves" th:width="500"/>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
