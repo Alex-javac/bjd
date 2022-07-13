@@ -78,6 +78,7 @@ public class MainController {
     public String signUp(@ModelAttribute("user") UserDto userDto) {
         log.info("MainController.signUp() run...");
         log.info("user: {}", userDto);
+        userService.saveUser(userDto);
         return "redirect:/bjd/signin";
     }
 }

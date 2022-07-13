@@ -9,7 +9,7 @@ CREATE TABLE users
     email        VARCHAR(255)          NOT NULL,
     phone_number VARCHAR(255)          NULL,
     password     VARCHAR(255)          NULL,
-    created_at   datetime              NULL,
+    created_at   datetime              NOT NULL DEFAULT NOW(),
     CONSTRAINT pk_users PRIMARY KEY (id)
 );
 
@@ -61,7 +61,7 @@ CREATE TABLE routes
     departure_time       datetime              NULL,
     arrival_time         datetime              NULL,
     price                DOUBLE                NULL,
-    created_at           datetime              NULL,
+    created_at           datetime              NOT NULL DEFAULT NOW(),
     departure_station_id BIGINT                NOT NULL,
     arrival_station_id   BIGINT                NOT NULL,
     train_id             BIGINT                NOT NULL,

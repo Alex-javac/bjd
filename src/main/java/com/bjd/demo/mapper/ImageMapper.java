@@ -4,7 +4,7 @@ import com.bjd.demo.dto.image.ImageDto;
 import com.bjd.demo.entity.ImageEntity;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring", uses = {StationMapper.class})
+@Mapper(componentModel = "spring")
 public interface ImageMapper {
     ImageDto mapImageEntityToDto(ImageEntity imageEntity);
 
