@@ -4,12 +4,12 @@
 CREATE TABLE users
 (
     id           BIGINT AUTO_INCREMENT NOT NULL,
-    firstname    VARCHAR(255)          NULL,
-    lastname     VARCHAR(255)          NULL,
-    email        VARCHAR(255)          NOT NULL,
-    phone_number VARCHAR(255)          NULL,
-    password     VARCHAR(255)          NULL,
-    created_at   datetime              NOT NULL DEFAULT NOW(),
+    firstname    VARCHAR(255) NULL,
+    lastname     VARCHAR(255) NULL,
+    email        VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(255) NULL,
+    password     VARCHAR(255) NULL,
+    created_at   datetime     NOT NULL DEFAULT NOW(),
     CONSTRAINT pk_users PRIMARY KEY (id)
 );
 
@@ -22,7 +22,7 @@ ALTER TABLE users
 CREATE TABLE stations
 (
     id   BIGINT AUTO_INCREMENT NOT NULL,
-    name VARCHAR(255)          NULL,
+    name VARCHAR(255) NULL,
     CONSTRAINT pk_stations PRIMARY KEY (id)
 );
 
@@ -32,10 +32,10 @@ CREATE TABLE stations
 CREATE TABLE images
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
-    name       VARCHAR(255)          NULL,
-    type       VARCHAR(255)          NULL,
-    image      BLOB                  NOT NULL,
-    station_id BIGINT                NULL,
+    name       VARCHAR(255) NULL,
+    type       VARCHAR(255) NULL,
+    image      BLOB NOT NULL,
+    station_id BIGINT NULL,
     CONSTRAINT pk_images PRIMARY KEY (id)
 );
 ALTER TABLE images
@@ -47,8 +47,8 @@ ALTER TABLE images
 CREATE TABLE trains
 (
     id     BIGINT AUTO_INCREMENT NOT NULL,
-    number VARCHAR(255)          NULL,
-    type   INT                   NULL,
+    number VARCHAR(255) NULL,
+    type   VARCHAR(255) NULL,
     CONSTRAINT pk_trains PRIMARY KEY (id)
 );
 
@@ -58,13 +58,13 @@ CREATE TABLE trains
 CREATE TABLE routes
 (
     id                   BIGINT AUTO_INCREMENT NOT NULL,
-    departure_time       datetime              NULL,
-    arrival_time         datetime              NULL,
-    price                DOUBLE                NULL,
-    created_at           datetime              NOT NULL DEFAULT NOW(),
-    departure_station_id BIGINT                NOT NULL,
-    arrival_station_id   BIGINT                NOT NULL,
-    train_id             BIGINT                NOT NULL,
+    departure_time       date NULL,
+    arrival_time         date NULL,
+    price                DOUBLE NULL,
+    created_at           datetime NOT NULL DEFAULT NOW(),
+    departure_station_id BIGINT   NOT NULL,
+    arrival_station_id   BIGINT   NOT NULL,
+    train_id             BIGINT   NOT NULL,
     CONSTRAINT pk_routes PRIMARY KEY (id)
 );
 
@@ -83,8 +83,8 @@ ALTER TABLE routes
 CREATE TABLE tickets
 (
     id       BIGINT AUTO_INCREMENT NOT NULL,
-    user_id  BIGINT                NOT NULL,
-    route_id BIGINT                NOT NULL,
+    user_id  BIGINT NOT NULL,
+    route_id BIGINT NOT NULL,
     CONSTRAINT pk_tickets PRIMARY KEY (id)
 );
 
