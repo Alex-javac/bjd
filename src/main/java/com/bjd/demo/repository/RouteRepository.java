@@ -12,7 +12,9 @@ public interface RouteRepository extends JpaRepository<RouteEntity, Long> {
     List<RouteEntity> findAllByDepartureStationNameAndArrivalStationNameAndDepartureTime(
             String departureStationName,
             String arrivalStationName,
-            LocalDate departureTime
-    );
+            LocalDate departureTime);
+    List<RouteEntity> findAllByDepartureStationNameAndArrivalStationName(
+            String departureStationName,
+            String arrivalStationName);
 
 }

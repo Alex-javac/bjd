@@ -26,11 +26,19 @@ public class RouteServiceImpl implements RouteService{
     @Override
     public List<RouteDto> find(FindRouteDto findRouteDto) {
         if (nonNull(findRouteDto)) {
-            List<RouteEntity> routeEntityList = routeRepository.findAllByDepartureStationNameAndArrivalStationNameAndDepartureTime(
-                    findRouteDto.getNameDepartureStation(),
-                    findRouteDto.getNameArrivalStation(),
-                    findRouteDto.getDepartureTime()
-            );
+            List<RouteEntity> routeEntityList;
+            if(nonNull(findRouteDto.getDepartureTime())) {
+                 routeEntityList = routeRepository.findAllByDepartureStationNameAndArrivalStationNameAndDepartureTime(
+                        findRouteDto.getNameDepartureStation(),
+                        findRouteDto.getNameArrivalStation(),
+                        findRouteDto.getDepartureTime()
+                );
+            }else {
+                routeEntityList = routeRepository.findAllByDepartureStationNameAndArrivalStationName(
+                        findRouteDto.getNameDepartureStation(),
+                        findRouteDto.getNameArrivalStation()
+                );
+            }
             return routeMapper.mapRouteEntityListToDtoList(routeEntityList);
         }
         throw new IllegalArgumentException("RouteServiceImpl.find() findRouteDto can`t be null");

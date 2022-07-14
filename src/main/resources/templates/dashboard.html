@@ -68,15 +68,31 @@
                             <tbody>
                             <tr>
                                 <th>Откуда</th>
-                                <td><input type="text" class="input" placeholder="название станции..."
-                                           style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
-                                           th:field="*{nameDepartureStation}"></td>
+                                <td>
+                                    <select type="text" class="input" size="1" style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                                            th:field="*{nameDepartureStation}">
+                                        <option value="Брест-Центральный">Брест-Центральный</option>
+                                        <option selected="Минск-Пассажирский" value="Минск-Пассажирский">Минск-Пассажирский</option>
+                                        <option value="Витебск">Витебск</option>
+                                        <option value="Гомель">Гомель</option>
+                                        <option value="Гродно">Гродно</option>
+                                        <option value="Могилев">Могилев</option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <th>Куда</th>
-                                <td><input type="text" class="input" placeholder="название станции..."
-                                           style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
-                                           th:field="*{nameArrivalStation}"></td>
+                                <td>
+                                    <select type="text" class="input" size="1" style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                                            th:field="*{nameArrivalStation}">
+                                        <option value="Брест-Центральный">Брест-Центральный</option>
+                                        <option selected="Минск-Пассажирский" value="Минск-Пассажирский">Минск-Пассажирский</option>
+                                        <option value="Витебск">Витебск</option>
+                                        <option value="Гомель">Гомель</option>
+                                        <option value="Гродно">Гродно</option>
+                                        <option value="Могилев">Могилев</option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <th>Дата</th>
