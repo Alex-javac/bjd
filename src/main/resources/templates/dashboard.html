@@ -13,15 +13,7 @@
         body {
             padding-top: 1em
         }
-
     </style>
-    <script  th:inline="javascript">
-        var token = [[${token}]];
-        console.log(token);
-        // $.ajaxSetup({
-        //     headers: { 'Authorization': 'Bearer ' + token }
-        // });
-    </script>
 </head>
 <body>
 <div class="container">
@@ -70,28 +62,47 @@
                         Заказ Билетов
                     </p>
                     <p style="color:#666;font-size:small;margin-bottom:1em"></p>
-
+                    <form th:method="post" th:action="@{/ticket/find}"
+                          th:object="${findRoute}">
+                        <table class="table is-fullwidth is-striped">
+                            <tbody>
+                            <tr>
+                                <th>Откуда</th>
+                                <td><input type="text" class="input" placeholder="название станции..."
+                                           style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                                           th:field="*{nameDepartureStation}"></td>
+                            </tr>
+                            <tr>
+                                <th>Куда</th>
+                                <td><input type="text" class="input" placeholder="название станции..."
+                                           style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                                           th:field="*{nameArrivalStation}"></td>
+                            </tr>
+                            <tr>
+                                <th>Дата</th>
+                                <td><input type="date" class="input"
+                                           style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                                           th:field="*{departureTime}"/></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <input type="submit" class="button is-fullwidth is-medium is-link" value="Поиск">
+                    </form>
                     <table class="table is-fullwidth is-striped">
+                        <tr>
+                            <th>Станция отправления</th>
+                            <th>Станция прибытия</th>
+                            <th>Дата отправления</th>
+                            <th>Дата прибытия</th>
 
-                        <tbody>
-                        <tr>
-                            <th>Откуда</th>
-                            <td><input type="text" class="input" placeholder="название станции..."
-                                       style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"></td>
                         </tr>
-                        <tr>
-                            <th>Куда</th>
-                            <td><input type="text" class="input" placeholder="название станции..."
-                                           style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"></td>
+                        <tr th:each="route : ${routes}">
+                            <td th:text="${route.departureStation.name}"></td>
+                            <td th:text="${route.arrivalStation.name}"></td>
+                            <td th:text="${route.departureTime}"></td>
+                            <td th:text="${route.arrivalTime}"></td>
                         </tr>
-                        <tr>
-                            <th>Дата</th>
-                            <td> <input type="date" class="input" style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"/></td>
-                        </tr>
-
-                        </tbody>
                     </table>
-
                 </div>
             </div>
             <div class="column is-3">

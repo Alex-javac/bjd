@@ -99,12 +99,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
-    public void signOut(String refreshToken, Long userId) {
-        accessTokenService.deactivateToken(refreshToken, userId);
-    }
-
-    @Override
     public UserDto getUserByEmail(String email) {
         return userMapper.mapUserEntityToDto(userRepository.findByEmail(email).orElse(null));
     }

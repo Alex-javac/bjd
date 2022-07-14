@@ -12,8 +12,6 @@ public interface UserService {
 
     void deleteUser(UserDto userDto);
 
-    void signOut(String refreshToken, Long userId);
-
     UserDto getUserByEmail(String email);
 
     UserEntity findByEmail(String email);

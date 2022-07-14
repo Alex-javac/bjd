@@ -24,13 +24,11 @@ import static com.bjd.demo.util.UtilConst.BEARER;
 @RequestMapping("/bjd")
 @RequiredArgsConstructor
 public class MainController {
-
     private final UserService userService;
 
     @GetMapping(value = "/dashboard")
     public String dashboard(Model model) {
-
-        model.addAttribute("loginForm", new FindRouteDto());
+        model.addAttribute("findRoute", new FindRouteDto());
         return "/dashboard";
     }
 
@@ -83,7 +81,7 @@ public class MainController {
         log.info("email: {}, password: {}", loginForm.getEmail(), loginForm.getPassword());
         UserSignInResponseDto userSignInResponseDto = userService.signIn(loginForm);
         request.getSession().setAttribute(AUTHORIZATION, BEARER + userSignInResponseDto.getAccessToken().getAccessToken());
-        return "/dashboard";
+        return "redirect:/bjd/dashboard";
     }
 
     @PostMapping(value = "/signup")

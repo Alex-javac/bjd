@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,7 +19,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class RouteDto {
     private Long id;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate departureTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate arrivalTime;
     private Double price;
     private LocalDateTime createdAt;
