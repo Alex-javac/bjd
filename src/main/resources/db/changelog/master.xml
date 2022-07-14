@@ -8,4 +8,8 @@
                  relativeToChangelogFile="true" endDelimiter=";"/>
     </changeSet>
 
+    <changeSet id="security" author="alexander.alexeyuk">
+        <sqlFile dbms="mysql" encoding="utf8" path="ddl/security.sql"
+                 relativeToChangelogFile="true" endDelimiter=";"/>
+    </changeSet>
 </databaseChangeLog>

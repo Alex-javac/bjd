@@ -15,7 +15,13 @@
         }
 
     </style>
-
+    <script  th:inline="javascript">
+        var token = [[${token}]];
+        console.log(token);
+        // $.ajaxSetup({
+        //     headers: { 'Authorization': 'Bearer ' + token }
+        // });
+    </script>
 </head>
 <body>
 <div class="container">
@@ -31,7 +37,7 @@
             <input type="text" class="input" placeholder="Search "
                    style="xmargin:.5em 0 1em;border:2px solid dodgerblue;">
             <p style="color:#666;font-size:large;margin-bottom:1em">
-                <div id="current_date_time_block"></div>
+            <div id="current_date_time_block"></div>
             </p>
         </div>
     </div>
@@ -46,7 +52,7 @@
                         <hr style="height:1px;margin:5px;">
                         <li><a th:href="@{/bjd/waitlist}">Расписание</a></li>
                         <li><a th:href="@{/bjd/users}">Пользователи</a></li>
-                         <li><a th:href="@{/bjd/railway_stations}">Железнодорожные вокзалы</a></li>
+                        <li><a th:href="@{/bjd/railway_stations}">Железнодорожные вокзалы</a></li>
                         <li><a th:href="@{/bjd/tickets}">Билеты</a></li>
                         <hr style="height:1px;margin:5px;">
                         <li><a th:href="@{/bjd/contacts}">Контакты</a></li>
@@ -61,22 +67,30 @@
             <div class="column">
                 <div class="box">
                     <p class="title is-4" style="margin:0">
-                        Vera Kuhn III
+                        Заказ Билетов
                     </p>
-                    <p style="color:#666;font-size:small;margin-bottom:1em">User since 2022-04-18
-                    </p>
-
-
-
-
+                    <p style="color:#666;font-size:small;margin-bottom:1em"></p>
 
                     <table class="table is-fullwidth is-striped">
 
-                        <tbody><tr><th>Email</th><td>dulcie@roberts.biz</td></tr>
-                        <tr><th>Phone</th><td>428.708.5824</td></tr>
-                        <tr><th>Address</th><td>Suite 507 3299 Eunice Port, Gutkowskistad, NC 96096</td></tr>
+                        <tbody>
+                        <tr>
+                            <th>Откуда</th>
+                            <td><input type="text" class="input" placeholder="название станции..."
+                                       style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"></td>
+                        </tr>
+                        <tr>
+                            <th>Куда</th>
+                            <td><input type="text" class="input" placeholder="название станции..."
+                                           style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"></td>
+                        </tr>
+                        <tr>
+                            <th>Дата</th>
+                            <td> <input type="date" class="input" style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"/></td>
+                        </tr>
 
-                        </tbody></table>
+                        </tbody>
+                    </table>
 
                 </div>
             </div>

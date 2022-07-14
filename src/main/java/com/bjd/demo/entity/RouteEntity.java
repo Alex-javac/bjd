@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -17,9 +18,9 @@ public class RouteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "departure_time")
-    private LocalDateTime departureTime;
+    private LocalDate departureTime;
     @Column(name = "arrival_time")
-    private LocalDateTime arrivalTime;
+    private LocalDate arrivalTime;
     @Column(name = "price")
     private Double price;
     @Column(name = "created_at", updatable = false, insertable = false)

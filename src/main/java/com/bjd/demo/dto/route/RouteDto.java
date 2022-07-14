@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -17,8 +18,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class RouteDto {
     private Long id;
-    private LocalDateTime departureTime;
-    private LocalDateTime arrivalTime;
+    private LocalDate departureTime;
+    private LocalDate arrivalTime;
     private Double price;
     private LocalDateTime createdAt;
     private StationDto departureStation;
