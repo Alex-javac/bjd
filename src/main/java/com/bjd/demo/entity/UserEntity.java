@@ -31,7 +31,7 @@ public class UserEntity {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private List<TicketEntity> tickets;
 
     @ManyToMany(cascade = {
@@ -44,4 +44,8 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<RoleEntity> roles;
+
+    public UserEntity(Long id) {
+        this.id = id;
+    }
 }

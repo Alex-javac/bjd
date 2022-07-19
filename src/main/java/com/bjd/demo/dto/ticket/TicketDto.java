@@ -1,6 +1,7 @@
 package com.bjd.demo.dto.ticket;
 
 import com.bjd.demo.dto.route.RouteDto;
+import com.bjd.demo.dto.user.UserDto;
 import com.bjd.demo.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +14,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TicketDto {
     private Long id;
-    private UserEntity user;
+    private UserDto user;
     private RouteDto route;
 }

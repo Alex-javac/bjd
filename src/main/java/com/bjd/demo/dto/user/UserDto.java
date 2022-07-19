@@ -1,7 +1,6 @@
 package com.bjd.demo.dto.user;
 
 import com.bjd.demo.dto.ticket.TicketDto;
-import com.bjd.demo.entity.TicketEntity;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -20,5 +19,8 @@ public class UserDto {
     private String phoneNumber;
     private String password;
     private LocalDateTime createdAt;
-    private List<TicketDto> tickets;
+
+    public String getFullName() {
+        return (firstName + " " + lastName).trim();
+    }
 }

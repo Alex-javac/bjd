@@ -70,244 +70,34 @@
 
 
                         <tbody>
-                        <tr>
+
+                        <tr th:each="ticket : ${tickets}">
 
                             <td>
-                                <p class="title is-6" style="margin:0">
-                                    Nestor Ernser
-                                </p>
-                                <p>
-                                    norberto.kilback@simonis.net
-                                </p>
-                                <p style="color:#666;font-size:small">User since 2021-09-16
-                                </p>
+                                <p class="title is-6" style="margin:0" th:text="${ticket.user.getFullName()}"></p>
+                                <p style="color:#666;font-size:small" th:text="${ticket.user.email}"></p>
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td align="right">
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-pencil"></i></span>
-                                </a>
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-trash"></i></span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-
                             <td>
-                                <p class="title is-6" style="margin:0">
-                                    Fr. Jamaal Maggio
-                                </p>
+                            </td>
+                            <td><p class="title is-6" style="margin:0" th:text="${ticket.route.train.number}">
+                            </p>
+                                <p style="color:#666;font-size:small" th:text="${ticket.route.train.type}"></p>
                                 <p>
-                                    yolande@emmerich-schneider.info
+                                    <span th:text="${ticket.route.departureTime}"></span>
+                                    -
+                                    <span th:text="${ticket.route.arrivalTime}"></span>
                                 </p>
-                                <p style="color:#666;font-size:small">User since 2021-11-13
-                                </p>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td align="right">
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-pencil"></i></span>
-                                </a>
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-trash"></i></span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-
+                                <p style="color:#666;font-size:small">
+                                    <span th:text="${ticket.route.departureStation.name}"></span>
+                                    -
+                                    <span th:text="${ticket.route.arrivalStation.name}"></span>
+                                </p></td>
+                            <form th:action="@{'/ticket/delete/' + ${ticket.id}}" method="post">
                             <td>
-                                <p class="title is-6" style="margin:0">
-                                    Russel Braun
-                                </p>
-                                <p>
-                                    lara.rutherford@hammes.net
-                                </p>
-                                <p style="color:#666;font-size:small">User since 2021-09-18
-                                </p>
+                                <input type="image" alt="delete" width="30"
+                                       src="https://cdn-icons-png.flaticon.com/512/1345/1345823.png"/>
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td align="right">
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-pencil"></i></span>
-                                </a>
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-trash"></i></span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                <p class="title is-6" style="margin:0">
-                                    Mickey Crist DC
-                                </p>
-                                <p>
-                                    bryce.kessler@emmerich.co
-                                </p>
-                                <p style="color:#666;font-size:small">User since 2021-11-10
-                                </p>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td align="right">
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-pencil"></i></span>
-                                </a>
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-trash"></i></span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                <p class="title is-6" style="margin:0">
-                                    Cherrie Reinger DO
-                                </p>
-                                <p>
-                                    heath@okeefe.net
-                                </p>
-                                <p style="color:#666;font-size:small">User since 2022-06-14
-                                </p>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td align="right">
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-pencil"></i></span>
-                                </a>
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-trash"></i></span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                <p class="title is-6" style="margin:0">
-                                    Amb. Rosario Blick
-                                </p>
-                                <p>
-                                    alonso@cummerata.io
-                                </p>
-                                <p style="color:#666;font-size:small">User since 2021-08-11
-                                </p>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td align="right">
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-pencil"></i></span>
-                                </a>
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-trash"></i></span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                <p class="title is-6" style="margin:0">
-                                    Sen. China Zieme
-                                </p>
-                                <p>
-                                    claude_baumbach@corwin.name
-                                </p>
-                                <p style="color:#666;font-size:small">User since 2021-10-26
-                                </p>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td align="right">
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-pencil"></i></span>
-                                </a>
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-trash"></i></span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                <p class="title is-6" style="margin:0">
-                                    Ken Mann
-                                </p>
-                                <p>
-                                    garfield@corwin.biz
-                                </p>
-                                <p style="color:#666;font-size:small">User since 2021-07-18
-                                </p>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td align="right">
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-pencil"></i></span>
-                                </a>
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-trash"></i></span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                <p class="title is-6" style="margin:0">
-                                    Gene McGlynn
-                                </p>
-                                <p>
-                                    ahmed@king.io
-                                </p>
-                                <p style="color:#666;font-size:small">User since 2022-02-04
-                                </p>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td align="right">
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-pencil"></i></span>
-                                </a>
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-trash"></i></span>
-                                </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                <p class="title is-6" style="margin:0">
-                                    Rex Harris I
-                                </p>
-                                <p>
-                                    adrianna@bartoletti.org
-                                </p>
-                                <p style="color:#666;font-size:small">User since 2021-08-12
-                                </p>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td align="right">
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-pencil"></i></span>
-                                </a>
-                                <a class="button" href="edit?id=1">
-                                    <span class="icon"><i class="fa fa-trash"></i></span>
-                                </a>
-                            </td>
+                            </form>
                         </tr>
 
                         </tbody>
@@ -316,14 +106,13 @@
             </div>
             <div class="column is-3">
                 <div class="box">
-                    <p class="title is-5">Quick actions</p>
+                    <p class="title is-5">Скачать Расписание</p>
                     <div class="buttons">
-
-                        <a href="#" class="button is-small is-link">Add Agent</a>
+                        <a th:href="@{/download/pdf}" class="button is-small">PDF</a>
+                        <a th:href="@{/download/txt}" class="button is-small">TXT</a>
+                        <a th:href="@{/download/csv}" class="button is-small">CSV</a>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

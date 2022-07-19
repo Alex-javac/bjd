@@ -8,6 +8,7 @@ import com.bjd.demo.dto.user.UserSignInResponseDto;
 import com.bjd.demo.dto.user.UserSignupResponseDto;
 import com.bjd.demo.entity.RoleEntity;
 import com.bjd.demo.entity.UserEntity;
+import com.bjd.demo.exceptions.SignInException;
 import com.bjd.demo.mapper.AccessTokenMapper;
 import com.bjd.demo.mapper.UserMapper;
 import com.bjd.demo.repository.RoleRepository;
@@ -84,7 +85,7 @@ public class UserServiceImpl implements UserService {
                 return responseDto;
             }
         }
-        throw new IllegalArgumentException("Invalid email or password");
+        throw new SignInException();
     }
 
     @Override

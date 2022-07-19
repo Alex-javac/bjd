@@ -110,6 +110,7 @@
                             <th>Станция прибытия</th>
                             <th>Дата отправления</th>
                             <th>Дата прибытия</th>
+                            <th></th>
 
                         </tr>
                         <tr th:each="route : ${routes}">
@@ -117,15 +118,25 @@
                             <td th:text="${route.arrivalStation.name}"></td>
                             <td th:text="${route.departureTime}"></td>
                             <td th:text="${route.arrivalTime}"></td>
+                            <form th:action="@{'/ticket/' + ${route.id}}" method="get">
+
+                            <td>
+                                <input type="image" alt="buy" width="40"
+                                       src="https://presentstudio.by/image/catalog/resources/logo/schz/3.png"/>
+                              </td>
+
+                                </form>
                         </tr>
                     </table>
                 </div>
             </div>
             <div class="column is-3">
                 <div class="box">
-                    <p class="title is-5">Quick actions</p>
+                    <p class="title is-5">Скачать Расписание</p>
                     <div class="buttons">
-                        <a href="/waitlist/new" class="button is-small">New Lead</a>
+                        <a th:href="@{/download/pdf}" class="button is-small">PDF</a>
+                        <a th:href="@{/download/txt}" class="button is-small">TXT</a>
+                        <a th:href="@{/download/csv}" class="button is-small">CSV</a>
                     </div>
                 </div>
             </div>

@@ -1,15 +1,13 @@
 package com.bjd.demo.dto.train;
 
 import com.bjd.demo.entity.TrainType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class TrainDto {
     private Long id;
     private String number;

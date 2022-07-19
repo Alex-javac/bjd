@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <style>
+        html {
+            background: #f5f5f5
+        }
+
+        body {
+            padding-top: 2em
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+
+
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3"></div>
+
+            <div class="column is-6">
+                <div class="box" >
+                    <p class="title is-4" style="margin:0">
+                        Билет
+                    </p>
+                    <p style="color:#666;font-size:small;margin-bottom:1em">
+                       [[${route.departureStation.name}]] - [[${route.arrivalStation.name}]]
+                    </p>
+
+
+                    <table class="table is-fullwidth is-striped">
+
+                        <tbody>
+                        <tr>
+                            <th> Поезд</th>
+                            <td>[[${route.train.number}]]
+                            <p style="color:#666;font-size:small;margin-bottom:1em">[[${route.train.type}]]</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Отправление</th>
+                            <td>[[${route.departureTime}]]
+                                <p style="color:#666;font-size:small;margin-bottom:1em">[[${route.departureStation.name}]]</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Прибытие</th>
+                            <td>[[${route.arrivalTime}]]
+                                <p style="color:#666;font-size:small;margin-bottom:1em">[[${route.arrivalStation.name}]]</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Стоимость</th>
+                            <td>[[${route.price}]] руб.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <form th:action="@{'/ticket/buy/' + ${route.id}}" method="post">
+                            <input type="submit" class="button is-link" value="Купить"/>
+                    <a th:href="@{/bjd/dashboard}" class="button">Отмена</a>
+                    </form>
+
+                </div>
+            </div>
+            <div class="column is-3">
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

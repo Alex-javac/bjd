@@ -34,6 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/bjd/signup").permitAll()
                 .anyRequest().authenticated()
                 .and()
+                .formLogin().loginPage("/bjd/signin").permitAll()
+                .and()
+                .exceptionHandling()
+                .and()
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
 

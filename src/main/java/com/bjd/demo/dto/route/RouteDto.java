@@ -2,12 +2,7 @@ package com.bjd.demo.dto.route;
 
 import com.bjd.demo.dto.station.StationDto;
 import com.bjd.demo.dto.train.TrainDto;
-import com.bjd.demo.entity.StationEntity;
-import com.bjd.demo.entity.TrainEntity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -17,6 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class RouteDto {
     private Long id;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

@@ -65,84 +65,29 @@
                 <div class="box">
                     <p class="title is-4" style="margin:0">
                         Расписание поездов
-
                     <table class="table is-fullwidth is-striped">
                         <tbody>
                         <tr>
-                            <th>Datetime</th>
-                            <th>Type</th>
-                            <th>Amount</th>
-                            <th>Tx id</th>
+                            <th>Поезд</th>
+                            <th>Отправление</th>
+                            <th>Прибытие</th>
+                            <th></th>
+                            <th>Стоимость</th>
                         </tr>
-
-                        <tr>
-                            <td>2022-01-07</td>
-                            <td>S</td>
-                            <td>3943</td>
-                            <td>4192</td>
-                        </tr>
-
-                        <tr>
-                            <td>2022-03-09</td>
-                            <td>W</td>
-                            <td>7491</td>
-                            <td>7014</td>
-                        </tr>
-
-                        <tr>
-                            <td>2022-03-20</td>
-                            <td>W</td>
-                            <td>9225</td>
-                            <td>3978</td>
-                        </tr>
-
-                        <tr>
-                            <td>2021-12-15</td>
-                            <td>O</td>
-                            <td>3597</td>
-                            <td>8318</td>
-                        </tr>
-
-                        <tr>
-                            <td>2021-12-03</td>
-                            <td>W</td>
-                            <td>4394</td>
-                            <td>9851</td>
-                        </tr>
-
-                        <tr>
-                            <td>2021-11-22</td>
-                            <td>O</td>
-                            <td>8394</td>
-                            <td>1430</td>
-                        </tr>
-
-                        <tr>
-                            <td>2022-06-11</td>
-                            <td>S</td>
-                            <td>8140</td>
-                            <td>3021</td>
-                        </tr>
-
-                        <tr>
-                            <td>2022-04-09</td>
-                            <td>O</td>
-                            <td>2485</td>
-                            <td>3358</td>
-                        </tr>
-
-                        <tr>
-                            <td>2021-12-26</td>
-                            <td>W</td>
-                            <td>5244</td>
-                            <td>2150</td>
-                        </tr>
-
-                        <tr>
-                            <td>2021-10-13</td>
-                            <td>U</td>
-                            <td>4247</td>
-                            <td>9344</td>
+                        <tr th:each="route : ${schedule}">
+                            <td th:text="${route.train.number}"></td>
+                            <td>
+                                <b th:text="${route.departureTime}"></b>
+                                <p style="color:#666;font-size:small;margin-bottom:1em"
+                                   th:text="${route.departureStation.name}"></p>
+                            </td>
+                            <td>
+                                <b th:text="${route.arrivalTime}"></b>
+                                <p style="color:#666;font-size:small;margin-bottom:1em"
+                                   th:text="${route.arrivalStation.name}"></p>
+                            </td>
+                            <td th:text="${route.train.type}"></td>
+                            <td th:text="${route.price}"></td>
                         </tr>
 
                         </tbody>
@@ -152,15 +97,22 @@
 
             <div class="column is-3">
                 <div class="box">
-                    <p class="title is-5">Quick actions</p>
+                    <p class="title is-5">Скачать Расписание</p>
                     <div class="buttons">
-
-                        <a href="new" class="button is-small is-link">New Lead</a>
-                        <a href="inviteselected" class="button is-small">Invite selected</a>
-                        <a href="invitenext50" class="button is-small">Invite next 50</a>
+                        <a th:href="@{/download/pdf}" class="button is-small">PDF</a>
+                        <a th:href="@{/download/txt}" class="button is-small">TXT</a>
+                        <a th:href="@{/download/csv}" class="button is-small">CSV</a>
                     </div>
                 </div>
-
+                <div class="box">
+                    <p class="title is-5">Smart filters</p>
+                    <p><a href="#">Unonboarded</a></p>
+                    <p><a href="#">Joined today</a></p>
+                    <p><a href="#">Joined yesterday</a></p>
+                    <p><a href="#">Joined this week</a></p>
+                    <p><a href="#">Upsell opportunities</a></p>
+                    <p><a href="#">Paused subscriptions</a></p>
+                </div>
             </div>
         </div>
     </div>

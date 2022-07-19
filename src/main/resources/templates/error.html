@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <title>Страница ошибки!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <style>
+        html {
+            background: #f5f5f5
+        }
+
+        body {
+            padding-top: 1em
+        }
+    </style>
+</head>
+<html>
+<div class="container">
+
+
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3"></div>
+
+            <div class="column is-6">
+                <div class="box" >
+                    <div class="errorPage">
+                        <span class="oops" style="color:red;font-size:40px;">Ошибка!</span><br/>
+
+                        <p class="title is-4" style="margin:0">Что-то пошло не так.</p>
+                        <p style="color:#666;font-size:small;margin-bottom:1em" th:text="${'Time: ' + timestamp}"></p>
+                        <p th:text="${'Status: ' + status}"></p>
+                        <p th:text="${'Details: ' + error}"></p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="column is-3">
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

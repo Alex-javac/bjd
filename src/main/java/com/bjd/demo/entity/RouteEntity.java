@@ -37,4 +37,8 @@ public class RouteEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "train_id", nullable = false)
     private TrainEntity train;
+
+    public RouteEntity(Long id) {
+        this.id = id;
+    }
 }
