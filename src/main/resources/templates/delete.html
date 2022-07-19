@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
-    <title>Страница ошибки!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
@@ -12,11 +11,13 @@
         }
 
         body {
-            padding-top: 1em
+            padding-top: 2em
         }
+
     </style>
+
 </head>
-<html>
+<body>
 <div class="container">
 
 
@@ -26,20 +27,18 @@
 
             <div class="column is-6">
                 <div class="box" >
-                    <div class="errorPage">
-                        <span class="oops" style="color:red;font-size:40px;">Ошибка!</span><br/>
-
-                        <p class="title is-4" style="margin:0">Что-то пошло не так.</p>
-                        <p style="color:#666;font-size:small;margin-bottom:1em" th:text="${'Time: ' + timestamp}"></p>
-                        <p th:text="${'Status: ' + status}"></p>
-                        <p th:text="${'Error: ' + error}"></p>
-                    </div>
+                    <p class="title is-4" style="margin:0">
+                        Вы действительно хотите удалить пользователя?
+                    </p>
                 </div>
+                    <form th:action="@{/user/delete}" method="post">
+                        <input type="submit" class="button is-link" value="Удалить"/>
+                        <a th:href="@{/bjd/dashboard}" class="button">Отмена</a>
+                    </form>
             </div>
-            <div class="column is-3">
-            </div>
+
         </div>
     </div>
 </div>
-
+</body>
 </html>

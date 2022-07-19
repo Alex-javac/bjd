@@ -69,10 +69,13 @@
                             <tr>
                                 <th>Откуда</th>
                                 <td>
-                                    <select type="text" class="input" size="1" style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                                    <select type="text" class="input" size="1"
+                                            style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
                                             th:field="*{nameDepartureStation}">
                                         <option value="Брест-Центральный">Брест-Центральный</option>
-                                        <option selected="Минск-Пассажирский" value="Минск-Пассажирский">Минск-Пассажирский</option>
+                                        <option selected="Минск-Пассажирский" value="Минск-Пассажирский">
+                                            Минск-Пассажирский
+                                        </option>
                                         <option value="Витебск">Витебск</option>
                                         <option value="Гомель">Гомель</option>
                                         <option value="Гродно">Гродно</option>
@@ -83,10 +86,13 @@
                             <tr>
                                 <th>Куда</th>
                                 <td>
-                                    <select type="text" class="input" size="1" style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                                    <select type="text" class="input" size="1"
+                                            style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
                                             th:field="*{nameArrivalStation}">
                                         <option value="Брест-Центральный">Брест-Центральный</option>
-                                        <option selected="Минск-Пассажирский" value="Минск-Пассажирский">Минск-Пассажирский</option>
+                                        <option selected="Минск-Пассажирский" value="Минск-Пассажирский">
+                                            Минск-Пассажирский
+                                        </option>
                                         <option value="Витебск">Витебск</option>
                                         <option value="Гомель">Гомель</option>
                                         <option value="Гродно">Гродно</option>
@@ -120,12 +126,12 @@
                             <td th:text="${route.arrivalTime}"></td>
                             <form th:action="@{'/ticket/' + ${route.id}}" method="get">
 
-                            <td>
-                                <input type="image" alt="buy" width="40"
-                                       src="https://presentstudio.by/image/catalog/resources/logo/schz/3.png"/>
-                              </td>
+                                <td>
+                                    <input type="image" alt="buy" width="40"
+                                           src="https://presentstudio.by/image/catalog/resources/logo/schz/3.png"/>
+                                </td>
 
-                                </form>
+                            </form>
                         </tr>
                     </table>
                 </div>
@@ -139,6 +145,29 @@
                         <a th:href="@{/download/csv}" class="button is-small">CSV</a>
                     </div>
                 </div>
+                <div class="box">
+                    <p class="title is-5">Личная информация</p>
+                    <table class="table is-fullwidth is-striped">
+                        <tbody>
+                        <tr>
+                            <tb>
+                                <p class="title is-6" style="margin:0"><a th:href="@{/user/delete}">delete</a></p>
+                            </tb>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <p class="title is-6" style="margin:0">[[${user.getFullName()}]]</p>
+                                <p>[[${user.email}]]</p>
+                                <p style="color:#666;font-size:small">[[${user.phoneNumber}]]</p>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <p><a th:href="@{/user/update}">Обновить личные данные</a></p>
+                </div>
+
             </div>
         </div>
     </div>

@@ -31,7 +31,7 @@
                         Регистрация
                     </p>
                     <p style="color:#666;font-size:small;margin-bottom:1em"></p>
-                    <form th:method="post" th:action="@{/bjd/signup}"
+                    <form th:method="post" th:action="@{/user/signup}"
                           th:object="${user}">
                 <table class="table is-fullwidth is-striped">
                         <tbody>
@@ -61,7 +61,7 @@
                         </tbody>
                 </table>
                     <button type="submit" class="button is-link">Создать аккаунт</button>
-                        <a th:href="@{/bjd/signin}" class="button">Войти</a>
+                        <a th:href="@{/user/signin}" class="button">Войти</a>
                     </form>
 
             </div>

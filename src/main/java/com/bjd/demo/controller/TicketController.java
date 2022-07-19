@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+import static com.bjd.demo.config.CustomSecurityContextHolder.getCurrentUser;
 import static com.bjd.demo.config.CustomSecurityContextHolder.getCurrentUserId;
 
 @Slf4j
@@ -36,6 +37,7 @@ public class TicketController {
     @PostMapping(value = "/find")
     public String find(@ModelAttribute("findRoute") FindRouteDto findRoute, Model model) {
         List<RouteDto> routeDtoList = routeService.find(findRoute);
+        model.addAttribute("user", getCurrentUser());
         model.addAttribute("routes", routeDtoList);
         return "/dashboard";
     }

@@ -26,14 +26,14 @@
                     <img src="https://www.rw.by/uploads/userfiles/images/logo_bzhd.png" style="width:200px;">
                     <p class="title is-4">Пожалуйста, войдите, чтобы продолжить</p>
                 </div>
-                <form th:method="post" th:action="@{/bjd/login}"
+                <form th:method="post" th:action="@{/user/login}"
                       th:object="${loginForm}">
                     <input class="input is-medium" type="text" placeholder="Email" th:field="*{email}" />
                     <input class="input is-medium" type="password" placeholder="Password" th:field="*{password}" />
                     <input type="submit" class="button is-fullwidth is-medium is-link" value="Вход">
                 </form>
                 <div style="text-align:center">
-                <a th:href="@{/bjd/signup}" class="control-buttons-tab">Регистрация</a>
+                <a th:href="@{/user/signup}" class="control-buttons-tab">Регистрация</a>
                 </div>
             </div>
         </div>

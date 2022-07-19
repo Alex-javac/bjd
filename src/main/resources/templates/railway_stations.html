@@ -103,6 +103,28 @@
             <a th:href="@{/download/csv}" class="button is-small">CSV</a>
           </div>
         </div>
+        <div class="box">
+          <p class="title is-5">Личная информация</p>
+          <table class="table is-fullwidth is-striped">
+            <tbody>
+            <tr>
+              <tb>
+                <p class="title is-6" style="margin:0"><a th:href="@{/user/delete}">delete</a></p>
+              </tb>
+            </tr>
+
+            <tr>
+              <td>
+                <p class="title is-6" style="margin:0">[[${user.getFullName()}]]</p>
+                <p>[[${user.email}]]</p>
+                <p style="color:#666;font-size:small">[[${user.phoneNumber}]]</p>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+          <p><a th:href="@{/user/update}">Обновить личные данные</a></p>
+        </div>
       </div>
     </div>
   </div>

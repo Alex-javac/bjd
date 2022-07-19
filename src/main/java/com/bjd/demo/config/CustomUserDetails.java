@@ -21,7 +21,6 @@ public class CustomUserDetails implements UserDetails {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private String emailVerificationToken;
     private String email;
     private String password;
     private Set<RoleEntity> roles;

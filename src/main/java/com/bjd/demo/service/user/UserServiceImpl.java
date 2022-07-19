@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.ZoneId;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -41,29 +42,30 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private static final String ADMIN = "ROLE_ADMIN";
     private static final String USER = "ROLE_USER";
+
     @Override
     @Transactional
     public UserSignupResponseDto saveUser(UserDto userDto) {
         if (nonNull(userDto)) {
             try {
-            if (preCheckUser(userDto)) {
-                log.info("User with this email already created");
-                throw new RuntimeException("User with this email=" + userDto.getEmail() + "already exists");
-            }
-            UserSignupResponseDto response = new UserSignupResponseDto();
-            UserEntity userEntity = userMapper.mapUserDtoToEntity(userDto);
-            userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
-            Set<RoleEntity> roles = new HashSet<>();
-            roles.add(roleRepository.findByName(USER));
-            if(userDto.getEmail().endsWith("@bjd.com")){
-                roles.add(roleRepository.findByName(ADMIN));
-            }
-            userEntity.setRoles(roles);
-            UserEntity savedUserEntity = userRepository.save(userEntity);
-            log.info("User has been saved in DataBases with id:" + savedUserEntity.getId());
-            response.setAccessToken(createToken(savedUserEntity.getEmail()));
-            response.setEmail(savedUserEntity.getEmail());
-            return response;
+                if (preCheckUser(userDto)) {
+                    log.info("User with this email already created");
+                    throw new RuntimeException("User with this email=" + userDto.getEmail() + "already exists");
+                }
+                UserSignupResponseDto response = new UserSignupResponseDto();
+                UserEntity userEntity = userMapper.mapUserDtoToEntity(userDto);
+                userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+                Set<RoleEntity> roles = new HashSet<>();
+                roles.add(roleRepository.findByName(USER));
+                if (userDto.getEmail().endsWith("@bjd.com")) {
+                    roles.add(roleRepository.findByName(ADMIN));
+                }
+                userEntity.setRoles(roles);
+                UserEntity savedUserEntity = userRepository.save(userEntity);
+                log.info("User has been saved in DataBases with id:" + savedUserEntity.getId());
+                response.setAccessToken(createToken(savedUserEntity.getEmail()));
+                response.setEmail(savedUserEntity.getEmail());
+                return response;
             } catch (Exception ex) {
                 log.error("UserServiceImpl.saveUser() ", ex);
                 throw new RuntimeException("error during user creation");
@@ -90,9 +92,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void deleteUser(UserDto userDto) {
-        if (nonNull(userDto)) {
-            userRepository.delete(userRepository.findById(userDto.getId())
+    public void deleteUser(Long userId) {
+        if (nonNull(userId)) {
+            userRepository.delete(userRepository.findById(userId)
                     .orElseThrow(() -> new RuntimeException("User not found")));
         } else {
             throw new IllegalArgumentException("UserServiceImpl.deleteUser() userId can`t be null");
@@ -108,6 +110,39 @@ public class UserServiceImpl implements UserService {
     public UserEntity findByEmail(String email) {
         return userRepository.findByEmail(email).orElse(null);
     }
+
+    @Override
+    public List<UserDto> findAll() {
+        List<UserEntity> entityList = userRepository.findAll();
+        return userMapper.mapUserEntityListToDtoList(entityList);
+    }
+
+    @Override
+    @Transactional
+    public UserDto update(Long currentUserId, UserDto userDto) {
+        if (nonNull(userDto) && nonNull(currentUserId)) {
+            UserEntity userEntity = userRepository.findById(currentUserId).orElseThrow(() -> new RuntimeException("User not found"));
+            if(nonNull(userDto.getPassword())&&!userDto.getPassword().isEmpty()){
+                userEntity.setPassword(passwordEncoder.encode(userDto.getPassword()));
+            }
+            if(nonNull(userDto.getEmail())&&!userDto.getEmail().isEmpty()){
+                userEntity.setEmail(userDto.getEmail());
+            }
+            if(nonNull(userDto.getFirstName())&&!userDto.getFirstName().isEmpty()){
+                userEntity.setFirstName(userDto.getFirstName());
+            }
+            if(nonNull(userDto.getLastName())&&!userDto.getLastName().isEmpty()){
+                userEntity.setLastName(userDto.getLastName());
+            }
+            if(nonNull(userDto.getPhoneNumber())&&!userDto.getPhoneNumber().isEmpty()){
+                userEntity.setPhoneNumber(userDto.getPhoneNumber());
+            }
+            UserEntity savedUser = userRepository.save(userEntity);
+            return userMapper.mapUserEntityToDto(savedUser);
+        }
+        throw new IllegalArgumentException("UserServiceImpl.update() user can`t be null");
+    }
+
     private boolean preCheckUser(UserDto userDto) {
         String email = userDto.getEmail();
         Optional<UserEntity> optionalUserEntity = userRepository.findByEmail(email);

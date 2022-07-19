@@ -14,16 +14,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+import static com.bjd.demo.config.CustomSecurityContextHolder.getCurrentUser;
 import static com.bjd.demo.config.CustomSecurityContextHolder.getCurrentUserId;
 import static com.bjd.demo.util.UtilConst.AUTHORIZATION;
-import static com.bjd.demo.util.UtilConst.BEARER;
 
 @Slf4j
 @Controller
@@ -37,28 +35,35 @@ public class MainController {
     @GetMapping(value = "/dashboard")
     public String dashboard(Model model) {
         model.addAttribute("findRoute", new FindRouteDto());
+        model.addAttribute("user", getCurrentUser());
         return "/dashboard";
     }
 
     @GetMapping(value = "/waitlist")
     public String waitList(Model model) {
         List<RouteDto> routeDtoList = routeService.findAll();
+        model.addAttribute("user", getCurrentUser());
         model.addAttribute("schedule", routeDtoList);
         return "/waitlist";
     }
 
     @GetMapping(value = "/users")
     public String customers(Model model) {
+        List<UserDto> userDtoList = userService.findAll();
+        model.addAttribute("user", getCurrentUser());
+        model.addAttribute("users", userDtoList);
         return "/users";
     }
 
     @GetMapping(value = "/railway_stations")
-    public String products() {
+    public String products(Model model) {
+        model.addAttribute("user", getCurrentUser());
         return "/railway_stations";
     }
 
     @GetMapping(value = "/contacts")
-    public String knowledgeBase() {
+    public String knowledgeBase(Model model) {
+        model.addAttribute("user", getCurrentUser());
         return "/contacts";
     }
 
@@ -67,41 +72,13 @@ public class MainController {
         Long userId = getCurrentUserId();
         List<TicketDto> ticketDtoList = ticketService.findAllByUserId(userId);
         model.addAttribute("tickets", ticketDtoList);
+        model.addAttribute("user", getCurrentUser());
         return "/tickets";
     }
 
     @GetMapping(value = "/signout")
     public String signOut(HttpServletRequest request) {
         request.getSession().removeAttribute(AUTHORIZATION);
-        return "redirect:/bjd/signin";
-    }
-
-    @GetMapping(value = "/signin")
-    public String signIn(Model model) {
-        model.addAttribute("loginForm", new LoginForm());
-        return "/login";
-    }
-
-    @GetMapping(value = "/signup")
-    public String signUp(Model model) {
-        model.addAttribute("user", new UserDto());
-        return "/registration";
-    }
-
-    @PostMapping(value = "/login")
-    public String login(HttpServletRequest request, @ModelAttribute("loginForm") LoginForm loginForm) {
-        log.info("MainController.login() run...");
-        log.info("email: {}, password: {}", loginForm.getEmail(), loginForm.getPassword());
-        UserSignInResponseDto userSignInResponseDto = userService.signIn(loginForm);
-        request.getSession().setAttribute(AUTHORIZATION, BEARER + userSignInResponseDto.getAccessToken().getAccessToken());
-        return "redirect:/bjd/dashboard";
-    }
-
-    @PostMapping(value = "/signup")
-    public String signUp(@ModelAttribute("user") UserDto userDto) {
-        log.info("MainController.signUp() run...");
-        log.info("user: {}", userDto);
-        userService.saveUser(userDto);
-        return "redirect:/bjd/signin";
+        return "redirect:/user/signin";
     }
 }
