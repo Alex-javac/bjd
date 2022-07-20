@@ -1,6 +1,7 @@
 package com.bjd.demo.dto.image;
 
 import com.bjd.demo.dto.station.StationDto;
+import com.bjd.demo.dto.user.UserDto;
 import lombok.*;
 
 @Getter
@@ -12,5 +13,5 @@ public class ImageDto {
     private String name;
     private String type;
     private byte[] image;
-    private StationDto station;
+    private UserDto station;
 }

@@ -64,8 +64,14 @@
             <div class="column">
                 <div class="box">
                     <p class="title is-4" style="margin:0">
-                        Расписание поездов
-
+                    <table class="table is-fullwidth is-striped">
+                        <tbody>
+                        <tr>
+                            <td class="title is-4" style="margin:0">Расписание поездов</td>
+                            <td><a class="button is-small" th:href="@{/route/create}">Добавить маршрут</a></td>
+                        </tr>
+                    </table>
+                    </tbody>
                     <table class="table is-fullwidth is-striped">
                         <tbody>
                         <tr>
@@ -89,6 +95,12 @@
                             </td>
                             <td th:text="${route.train.type}"></td>
                             <td th:text="${route.price}"></td>
+                            <form th:action="@{'/route/delete/' + ${route.id}}" method="post">
+                                <td>
+                                    <input type="image" alt="delete" width="20"
+                                           src="https://cdn-icons-png.flaticon.com/512/1345/1345823.png"/>
+                                </td>
+                            </form>
                         </tr>
 
                         </tbody>

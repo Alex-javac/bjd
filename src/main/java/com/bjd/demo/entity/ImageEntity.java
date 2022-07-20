@@ -6,7 +6,9 @@ import javax.persistence.*;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "images")
 public class ImageEntity {
@@ -26,6 +28,6 @@ public class ImageEntity {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "station_id", referencedColumnName = "id")
-    private StationEntity station;
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private UserEntity user;
 }

@@ -12,4 +12,9 @@ public class TrainDto {
     private Long id;
     private String number;
     private TrainType type;
+
+    public TrainDto(String number, TrainType type) {
+        this.number = number;
+        this.type = type;
+    }
 }

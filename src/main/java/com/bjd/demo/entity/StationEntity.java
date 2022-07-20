@@ -17,7 +17,4 @@ public class StationEntity {
     private Long id;
     @Column(name = "name")
     private String name;
-
-    @OneToOne(mappedBy = "station", cascade = CascadeType.ALL, orphanRemoval = true)
-    private ImageEntity image;
 }

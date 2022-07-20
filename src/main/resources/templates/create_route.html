@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+  <style>
+    html {
+      background: #f5f5f5
+    }
+
+    body {
+      padding-top: 2em
+    }
+
+  </style>
+
+</head>
+<body>
+<div class="container">
+
+
+  <div class="container">
+    <div class="columns">
+      <div class="column is-3"></div>
+
+      <div class="column is-6">
+
+        <div class="box">
+          <p class="title is-4" style="margin:0">
+            Новый маршрут
+          </p>
+          <p style="color:#666;font-size:small;margin-bottom:1em"></p>
+          <form th:method="post" th:action="@{/route/create}"
+                th:object="${route}">
+            <table class="table is-fullwidth is-striped">
+              <tbody>
+              <tr>
+                <th>Откуда</th>
+                <td>
+                  <select type="text" required class="input" size="1"
+                          style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                          th:field="*{departureStation}">
+                    <option value="Брест-Центральный">Брест-Центральный</option>
+                    <option selected="Минск-Пассажирский" value="Минск-Пассажирский">Минск-Пассажирский</option>
+                    <option value="Витебск">Витебск</option>
+                    <option value="Гомель">Гомель</option>
+                    <option value="Гродно">Гродно</option>
+                    <option value="Могилев">Могилев</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>Дата Отправления</th>
+                <td><input type="date" required class="input"
+                           style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                           th:field="*{departureTime}"/></td>
+              </tr>
+              <tr>
+                <th>Куда</th>
+                <td>
+                  <select type="text" required class="input" size="1"
+                          style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                          th:field="*{arrivalStation}">
+                    <option value="Брест-Центральный">Брест-Центральный</option>
+                    <option selected="Минск-Пассажирский" value="Минск-Пассажирский">Минск-Пассажирский</option>
+                    <option value="Витебск">Витебск</option>
+                    <option value="Гомель">Гомель</option>
+                    <option value="Гродно">Гродно</option>
+                    <option value="Могилев">Могилев</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>Дата Прибытия</th>
+                <td><input type="date" required class="input"
+                           style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                           th:field="*{arrivalTime}"/></td>
+              </tr>
+              <tr>
+                <th>Номер поезда</th>
+                <td><input type="text" required class="input"
+                           style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                           th:field="*{trainNumber}"/></td>
+              </tr>
+              <tr>
+                <th>Тип поезда</th>
+                <td>
+                  <select type="text" required class="input" size="1"
+                          style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                          th:field="*{type}">
+                    <option value="Сидячий">Сидячий</option>
+                    <option value="Плацкартный">Плацкартный</option>
+                    <option value="Купейный">Купейный</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>Стоимость Билета</th>
+                <td><input type="number" required class="input"
+                           style="xmargin:.5em 0 1em;border:2px solid dodgerblue;"
+                           th:field="*{price}"/></td>
+              </tr>
+              </tbody>
+            </table>
+            <button type="submit" class="button is-link">Создать</button>
+            <a th:href="@{/bjd/waitlist}" class="button">Отмена</a>
+          </form>
+
+        </div>
+      </div>
+      <div class="column is-3">
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

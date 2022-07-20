@@ -31,16 +31,16 @@ CREATE TABLE stations
 -- --------------------------------------------------------
 CREATE TABLE images
 (
-    id         BIGINT AUTO_INCREMENT NOT NULL,
-    name       VARCHAR(255) NULL,
-    type       VARCHAR(255) NULL,
-    image      BLOB NOT NULL,
-    station_id BIGINT NULL,
+    id      BIGINT AUTO_INCREMENT NOT NULL,
+    name    VARCHAR(255) NULL,
+    type    VARCHAR(255) NULL,
+    image   BLOB NOT NULL,
+    user_id BIGINT NULL,
     CONSTRAINT pk_images PRIMARY KEY (id)
 );
-ALTER TABLE images
-    ADD CONSTRAINT FK_IMAGES_ON_STATION FOREIGN KEY (station_id) REFERENCES stations (id);
 
+ALTER TABLE images
+    ADD CONSTRAINT FK_IMAGES_ON_USER FOREIGN KEY (user_id) REFERENCES users (id);
 -- --------------------------------------------------------
 --                     trains
 -- --------------------------------------------------------
