@@ -4,6 +4,7 @@ import com.bjd.demo.dto.login.LoginForm;
 import com.bjd.demo.dto.route.FindRouteDto;
 import com.bjd.demo.dto.user.UserDto;
 import com.bjd.demo.dto.user.UserSignInResponseDto;
+import com.bjd.demo.service.image.ImageService;
 import com.bjd.demo.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,7 @@ import static java.util.Objects.nonNull;
 public class UserController {
 
     private final UserService userService;
+    private final ImageService imageService;
 
     @GetMapping(value = "/signin")
     public String signIn(Model model) {
@@ -65,16 +67,18 @@ public class UserController {
     }
 
     @PostMapping(value = "/update")
-    public String update(@ModelAttribute("user") UserDto userDto,Model model) {
+    public String update(@ModelAttribute("user") UserDto userDto, Model model) {
         log.info("UserController.update() run...");
         log.info("user: {}", userDto);
         Long currentUserId = getCurrentUserId();
         UserDto updatedUser = userService.update(currentUserId, userDto);
-        if((nonNull(userDto.getEmail())&&!userDto.getEmail().isEmpty())||(nonNull(userDto.getPassword())&&!userDto.getPassword().isEmpty())){
+        if ((nonNull(userDto.getEmail()) && !userDto.getEmail().isEmpty()) || (nonNull(userDto.getPassword()) && !userDto.getPassword().isEmpty())) {
             model.addAttribute("loginForm", new LoginForm());
             return "/login";
         }
         model.addAttribute("findRoute", new FindRouteDto());
+        String image = imageService.getImageByUserId(updatedUser.getId());
+        model.addAttribute("image", image);
         model.addAttribute("user", updatedUser);
         return "/dashboard";
     }

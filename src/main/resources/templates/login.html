@@ -28,8 +28,8 @@
                 </div>
                 <form th:method="post" th:action="@{/user/login}"
                       th:object="${loginForm}">
-                    <input class="input is-medium" type="text" placeholder="Email" th:field="*{email}" />
-                    <input class="input is-medium" type="password" placeholder="Password" th:field="*{password}" />
+                    <input class="input is-medium" required type="text" placeholder="Email" th:field="*{email}" />
+                    <input class="input is-medium" required type="password" placeholder="Password" th:field="*{password}" />
                     <input type="submit" class="button is-fullwidth is-medium is-link" value="Вход">
                 </form>
                 <div style="text-align:center">
